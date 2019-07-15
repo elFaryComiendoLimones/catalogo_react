@@ -8,12 +8,9 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state = {
-            showHideSidenav: ''
-        }
-    }
-
-    getInitialState(){
-        return {"showHideSidenav":"toggled"};
+            showHideSidenav: '',
+            products: [{ "Name": "Cheese", "Price" : 2.50, "Location": "Refrigerated foods"},  { "Name": "Crisps", "Price" : 3, "Location": "the Snack isle"},  { "Name": "Pizza", "Price" : 4, "Location": "Refrigerated foods"},  { "Name": "Chocolate", "Price" : 1.50, "Location": "the Snack isle"},  { "Name": "Self-raising flour", "Price" : 1.50, "Location": "Home baking"},  { "Name": "Ground almonds", "Price" : 3, "Location": "Home baking"}, { "Name": "Patatas", "Price" : 6.50, "Location": "El Padul"}]
+        };
     }
 
     toggleSidenav() {
@@ -71,7 +68,9 @@ class App extends Component {
                 </header>
                 <div className="container pt-5 pb-5">
                     <div className="row products">
-                        <Product/>
+                        {this.state.products.map((item, key) =>
+                            <Product item={item}/>
+                        )}
                     </div>
                 </div>
             </div>
